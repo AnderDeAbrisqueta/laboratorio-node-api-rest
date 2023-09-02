@@ -1,0 +1,24 @@
+import express, { query } from "express";
+import { getHouse, getHouseList } from "./mock-db";
+
+const app = express();
+
+app.get("/", (req, res) => {
+  res.send("Test");
+});
+
+app.get("/api/houses", async (req, res) => {
+  const houseList = await getHouseList();
+  res.send(houseList);
+});
+
+app.get("/api/houses/:id", async (req, res) => {
+  const { id } = req.params;
+  const houseId = Number(id);
+  const house = await getHouse(houseId);
+  res.send(house);
+});
+
+app.listen(3000, () => {
+  console.log("Server ready at port 3000");
+});
