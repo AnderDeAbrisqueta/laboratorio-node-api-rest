@@ -1,4 +1,5 @@
-import { House } from "./house";
+import { ObjectId } from "mongodb";
+import { House } from "./house/index";
 
 export interface DB {
   houses: House[];
@@ -7,7 +8,7 @@ export interface DB {
 export const db: DB = {
   houses: [
     {
-      id: "1",
+      _id: new ObjectId(),
       title: "Novick",
       image: "http://dummyimage.com/249x100.png/5fa2dd/ffffff",
       description:
@@ -17,7 +18,7 @@ export const db: DB = {
       bath_number: 1,
     },
     {
-      id: "2",
+      _id: new ObjectId(),
       title: "NovickII",
       image: "http://dummyimage.com/140x100.png/cc0000/ffffff",
       description:
@@ -27,7 +28,7 @@ export const db: DB = {
       bath_number: 2,
     },
     {
-      id: "3",
+      _id: new ObjectId(),
       title: "Nancy",
       image: "http://dummyimage.com/117x100.png/ff4444/ffffff",
       description: "Nullam porttitor lacus at turpis.",
@@ -36,7 +37,7 @@ export const db: DB = {
       bath_number: 1,
     },
     {
-      id: "4",
+      _id: new ObjectId(),
       title: "Marcy",
       image: "http://dummyimage.com/236x100.png/cc0000/ffffff",
       description:
@@ -46,7 +47,7 @@ export const db: DB = {
       bath_number: 1,
     },
     {
-      id: "5",
+      _id: new ObjectId(),
       title: "Surrey",
       image: "http://dummyimage.com/139x100.png/cc0000/ffffff",
       description:
@@ -56,7 +57,7 @@ export const db: DB = {
       bath_number: 1,
     },
     {
-      id: "6",
+      _id: new ObjectId(),
       title: "Carioca",
       image: "http://dummyimage.com/228x100.png/5fa2dd/ffffff",
       description:
@@ -66,7 +67,7 @@ export const db: DB = {
       bath_number: 2,
     },
     {
-      id: "7",
+      _id: new ObjectId(),
       title: "Clyde Gallagher",
       image: "http://dummyimage.com/169x100.png/dddddd/000000",
       description:
@@ -76,7 +77,7 @@ export const db: DB = {
       bath_number: 2,
     },
     {
-      id: "8",
+      _id: new ObjectId(),
       title: "Jay",
       image: "http://dummyimage.com/152x100.png/cc0000/ffffff",
       description:
@@ -86,7 +87,7 @@ export const db: DB = {
       bath_number: 1,
     },
     {
-      id: "9",
+      _id: new ObjectId(),
       title: "Mayfield",
       image: "http://dummyimage.com/169x100.png/cc0000/ffffff",
       description:
@@ -96,7 +97,7 @@ export const db: DB = {
       bath_number: 1,
     },
     {
-      id: "10",
+      _id: new ObjectId(),
       title: "Rieder",
       image: "http://dummyimage.com/238x100.png/cc0000/ffffff",
       description:

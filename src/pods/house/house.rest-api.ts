@@ -25,7 +25,12 @@ houseApi.get("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
     const house = await houseRepository.getHouse(id);
-    res.send(mapHouseFromModelToApi(house));
+
+    if (house) {
+      res.send(mapHouseFromModelToApi(house));
+    } else {
+      res.sendStatus(404);
+    }
   } catch (error) {
     next(error);
   }
@@ -44,9 +49,14 @@ houseApi.post("/", async (req, res, next) => {
 houseApi.put("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    const house = mapHouseFromApiToModel({ ...req.body, id });
-    await houseRepository.saveHouse(house);
-    res.sendStatus(204);
+
+    if (await houseRepository.getHouse(id)) {
+      const house = mapHouseFromApiToModel({ ...req.body, id });
+      await houseRepository.saveHouse(house);
+      res.sendStatus(204);
+    } else {
+      res.sendStatus(404);
+    }
   } catch (error) {
     next(error);
   }
@@ -55,8 +65,8 @@ houseApi.put("/:id", async (req, res, next) => {
 houseApi.delete("/:id", async (req, res, next) => {
   try {
     const { id } = req.params;
-    await houseRepository.deleteHouse(id);
-    res.sendStatus(204);
+    const isDeleted = await houseRepository.deleteHouse(id);
+    res.sendStatus(isDeleted ? 204 : 404);
   } catch (error) {
     next(error);
   }

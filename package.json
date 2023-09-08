@@ -4,9 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "run-p -l type-check:watch start:dev",
+    "start": "run-p -l type-check:watch start:dev start:local-db",
     "start:dev": "nodemon --exec babel-node --extensions \".ts\" src/index.ts",
-    "start:console-runners": "npm run type-check && nodemon --exec babel-node --extensions \".ts\" src/console-runners/index.ts",
+    "start:console-runners": "npm run type-check && babel-node -r dotenv/config --extensions \".ts\" src/console-runners/index.ts",
+    "start:local-db": "docker-compose up -d",
     "type-check": "tsc --noEmit",
     "type-check:watch": "npm run type-check -- --watch"
   },
@@ -23,7 +24,8 @@
   "dependencies": {
     "cors": "^2.8.5",
     "dotenv": "^16.3.1",
-    "express": "^4.18.2"
+    "express": "^4.18.2",
+    "mongodb": "^6.0.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.22.10",

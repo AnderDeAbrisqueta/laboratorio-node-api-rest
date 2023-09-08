@@ -1,8 +1,9 @@
-import * as model from "dals";
+import { ObjectId } from "mongodb";
+import * as model from "dals/index";
 import * as apiModel from "./house.api-model";
 
 export const mapHouseFromModelToApi = (house: model.House): apiModel.House => ({
-  id: house.id,
+  id: house._id.toHexString(),
   title: house.title,
   image: house.image,
   description: house.description,
@@ -16,7 +17,7 @@ export const mapHouseListFromModelToApi = (
 ): apiModel.House[] => houseList.map((house) => mapHouseFromModelToApi(house));
 
 export const mapHouseFromApiToModel = (house: apiModel.House): model.House => ({
-  id: house.id,
+  _id: new ObjectId(house.id),
   title: house.title,
   image: house.image,
   description: house.description,

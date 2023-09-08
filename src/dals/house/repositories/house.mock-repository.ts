@@ -1,12 +1,13 @@
+import { ObjectId } from "mongodb";
 import { HouseRepository } from "./house.repository";
 import { House } from "../house.model";
 import { db } from "../../mock-data";
 
 const insertHouse = (house: House) => {
-  const id = (db.houses.length + 1).toString();
+  const _id = new ObjectId();
   const newHouse: House = {
     ...house,
-    id,
+    _id,
   };
 
   db.houses = [...db.houses, newHouse];
@@ -15,7 +16,7 @@ const insertHouse = (house: House) => {
 
 const updateHouse = (house: House) => {
   db.houses = db.houses.map((b) =>
-    b.id === house.id ? { ...b, ...house } : b
+    b._id.toHexString() === house._id.toHexString() ? { ...b, ...house } : b
   );
   return house;
 };
@@ -37,12 +38,13 @@ const paginateBookList = (
 export const mockRepository: HouseRepository = {
   getHouseList: async (page?: number, pageSize?: number) =>
     paginateBookList(db.houses, page, pageSize),
-  getHouse: async (id: string) => db.houses.find((b) => b.id === id),
+  getHouse: async (id: string) =>
+    db.houses.find((b) => b._id.toHexString() === id),
   saveHouse: async (house: House) => {
-    return Boolean(house.id) ? updateHouse(house) : insertHouse(house);
+    return Boolean(house._id) ? updateHouse(house) : insertHouse(house);
   },
   deleteHouse: async (id: string) => {
-    db.houses = db.houses.filter((b) => b.id !== id);
+    db.houses = db.houses.filter((b) => b._id.toHexString() !== id);
     return true;
   },
 };
