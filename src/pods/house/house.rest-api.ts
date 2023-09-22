@@ -12,8 +12,8 @@ houseApi.get("/", async (req, res, next) => {
   try {
     const page = Number(req.query.page);
     const pageSize = Number(req.query.pageSize);
-    const country = req.query.country;
-    let houseList = await houseRepository.getHouseList(page, pageSize);
+    const country = String(req.query.country);
+    let houseList = await houseRepository.getHouseList(page, pageSize, country);
 
     res.send(mapHouseListFromModelToApi(houseList));
   } catch (error) {
