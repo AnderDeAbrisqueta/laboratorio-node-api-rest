@@ -19,23 +19,23 @@ const houseSchema = new Schema<House>({
   minimum_nights: { type: Schema.Types.String },
   maximum_nights: { type: Schema.Types.String },
   cancellation_policy: { type: Schema.Types.String },
-  last_scraped: { $date: { type: Schema.Types.Date } },
-  calendar_last_scraped: { $date: { type: Schema.Types.Date } },
-  first_review: { $date: { type: Schema.Types.Date } },
-  last_review: { $date: { type: Schema.Types.Date } },
+  last_scraped: { type: Schema.Types.Date },
+  calendar_last_scraped: { type: Schema.Types.Date },
+  first_review: { type: Schema.Types.Date },
+  last_review: { type: Schema.Types.Date },
   accommodates: { type: Schema.Types.Number },
   bedrooms: { type: Schema.Types.Number },
   beds: { type: Schema.Types.Number },
   number_of_reviews: { type: Schema.Types.Number },
-  bathrooms: { $numberDecimal: String },
+  bathrooms: { type: Schema.Types.Number },
   amenities: { type: Schema.Types.Mixed },
-  price: { $numberDecimal: String },
-  weekly_price: { $numberDecimal: String },
-  monthly_price: { $numberDecimal: String },
-  security_deposit: { $numberDecimal: String },
-  cleaning_fee: { $numberDecimal: String },
-  extra_people: { $numberDecimal: String },
-  guests_included: { $numberDecimal: String },
+  price: { type: Schema.Types.Number },
+  weekly_price: { type: Schema.Types.Number },
+  monthly_price: { type: Schema.Types.Number },
+  security_deposit: { type: Schema.Types.Number },
+  cleaning_fee: { type: Schema.Types.Number },
+  extra_people: { type: Schema.Types.Number },
+  guests_included: { type: Schema.Types.Number },
   images: {
     thumbnail_url: { type: Schema.Types.String },
     medium_url: { type: Schema.Types.String },
@@ -92,7 +92,7 @@ const houseSchema = new Schema<House>({
     {
       _id: { type: Schema.Types.String },
       date: {
-        $date: { type: Schema.Types.Date },
+        type: Schema.Types.Date,
       },
       listing_id: { type: Schema.Types.String },
       reviewer_id: { type: Schema.Types.String },
@@ -102,4 +102,4 @@ const houseSchema = new Schema<House>({
   ],
 });
 
-export const houseContext = model<House>("House", houseSchema);
+export const houseContext = model<House>("listingsandreview", houseSchema);
