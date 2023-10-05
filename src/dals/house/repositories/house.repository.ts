@@ -1,4 +1,4 @@
-import { House } from "../house.model";
+import { House, Review } from "../house.model";
 
 export interface HouseRepository {
   getHouseList: (
@@ -9,4 +9,5 @@ export interface HouseRepository {
   getHouse: (id: string) => Promise<House>;
   saveHouse: (book: House) => Promise<House>;
   deleteHouse: (id: string) => Promise<boolean>;
+  getReviews: (id: string) => Promise<Review[]>;
 }

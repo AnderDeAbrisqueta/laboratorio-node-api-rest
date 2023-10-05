@@ -2,6 +2,7 @@ import { ObjectId } from "mongodb";
 import { HouseRepository } from "./house.repository";
 import { House } from "../house.model";
 import { db } from "../../mock-data";
+import { houseContext } from "../house.context";
 
 const insertHouse = (house: House) => {
   const _id = new ObjectId();
@@ -46,5 +47,15 @@ export const mockRepository: HouseRepository = {
   deleteHouse: async (id: string) => {
     db.houses = db.houses.filter((b) => b._id.toHexString() !== id);
     return true;
+  },
+  getReviews: async (id: string) => {
+    return await houseContext
+      .find(
+        {
+          _id: id,
+        },
+        { _id: 0, reviews: 1 }
+      )
+      .lean();
   },
 };

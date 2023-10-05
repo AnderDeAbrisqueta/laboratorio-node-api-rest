@@ -3,6 +3,7 @@ import { houseRepository } from "dals";
 import {
   mapHouseListFromModelToApi,
   mapHouseFromModelToApi,
+  mapReviewsFromModelToApi,
   mapHouseFromApiToModel,
 } from "./house.mappers";
 
@@ -67,6 +68,20 @@ houseApi.delete("/:id", async (req, res, next) => {
     const { id } = req.params;
     const isDeleted = await houseRepository.deleteHouse(id);
     res.sendStatus(isDeleted ? 204 : 404);
+  } catch (error) {
+    next(error);
+  }
+});
+
+houseApi.get("/:id/reviews", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    let reviewList = await houseRepository.getReviews(id);
+    if (reviewList) {
+      res.send(mapReviewsFromModelToApi(reviewList));
+    } else {
+      res.sendStatus(404);
+    }
   } catch (error) {
     next(error);
   }

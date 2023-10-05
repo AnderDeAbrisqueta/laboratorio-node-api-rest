@@ -45,4 +45,14 @@ export const dbRepository: HouseRepository = {
       .lean();
     return deletedCount === 1;
   },
+  getReviews: async (id: string) => {
+    return await houseContext
+      .findOne(
+        {
+          _id: new ObjectId(id),
+        },
+        { _id: 0, reviews: 1 }
+      )
+      .lean();
+  },
 };
