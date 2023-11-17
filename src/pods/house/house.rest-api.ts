@@ -76,7 +76,7 @@ houseApi.delete("/:id", async (req, res, next) => {
 houseApi.get("/:id/reviews", async (req, res, next) => {
   try {
     const { id } = req.params;
-    let reviewList = await houseRepository.getReviews(id);
+    const reviewList = await houseRepository.getReviews(id);
     if (reviewList) {
       res.send(mapReviewsFromModelToApi(reviewList));
     } else {

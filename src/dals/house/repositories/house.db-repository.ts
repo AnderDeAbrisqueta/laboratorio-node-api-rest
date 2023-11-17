@@ -46,13 +46,13 @@ export const dbRepository: HouseRepository = {
     return deletedCount === 1;
   },
   getReviews: async (id: string) => {
-    return await houseContext
-      .findOne(
-        {
-          _id: new ObjectId(id),
-        },
-        { _id: 0, reviews: 1 }
-      )
+    const { reviews } = await houseContext
+      .findOne({
+        _id: new ObjectId(id),
+      })
+      .select({ _id: 0, reviews: 1 })
       .lean();
+
+    return reviews;
   },
 };
