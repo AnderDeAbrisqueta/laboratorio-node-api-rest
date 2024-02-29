@@ -22,7 +22,7 @@ const updateHouse = (house: House) => {
   return house;
 };
 
-const paginateBookList = (
+const paginateHouseList = (
   houseList: House[],
   page: number,
   pageSize: number
@@ -38,7 +38,7 @@ const paginateBookList = (
 
 export const mockRepository: HouseRepository = {
   getHouseList: async (page?: number, pageSize?: number) =>
-    paginateBookList(db.houses, page, pageSize),
+    paginateHouseList(db.houses, page, pageSize),
   getHouse: async (id: string) =>
     db.houses.find((b) => b._id.toHexString() === id),
   saveHouse: async (house: House) => {
