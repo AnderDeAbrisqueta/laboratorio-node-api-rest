@@ -38,7 +38,7 @@ export interface House {
   // guests_included?: number;
   // images?: Object;
   // host?: Object;
-  // address?: Object;
+  address?: Object;
   // availability?: Object;
   // review_scores?: Object;
   reviews: Review[];
