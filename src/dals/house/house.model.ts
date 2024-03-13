@@ -38,7 +38,7 @@ export interface House {
   // guests_included?: number;
   // images?: Object;
   // host?: Object;
-  address?: Object;
+  address: Address[];
   // availability?: Object;
   // review_scores?: Object;
   reviews: Review[];
@@ -51,4 +51,20 @@ export interface Review {
   reviewer_id?: string;
   reviewer_name?: string;
   comments: string;
+}
+
+export interface Address {
+  street: string;
+  suburb: string;
+  government_area: string;
+  market: string;
+  country: string;
+  country_code: string;
+  location: Location[];
+}
+
+export interface Location {
+  type: string;
+  coordinates: Object;
+  is_location_exact: boolean;
 }

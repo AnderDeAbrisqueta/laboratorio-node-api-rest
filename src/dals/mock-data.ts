@@ -116,19 +116,19 @@ export const db: DB = {
       //     "government_id",
       //   ],
       // },
-      address: {
+      address: [{
         street: "Porto, Porto, Portugal",
         suburb: "",
         government_area: "Cedofeita, Ildefonso, Sé, Miragaia, Nicolau, Vitória",
         market: "Porto",
         country: "Portugal",
         country_code: "PT",
-        location: {
+        location: [{
           type: "Point",
           coordinates: [-8.61308, 41.1413],
           is_location_exact: false,
-        },
-      },
+        }],
+      }],
       // availability: {
       //   availability_30: 28,
       //   availability_60: 47,
@@ -229,19 +229,19 @@ export const db: DB = {
       //   host_total_listings_count: 1,
       //   host_verifications: ["email", "phone", "facebook"],
       // },
-      address: {
+      address: [{
         street: "Rio de Janeiro, Rio de Janeiro, Brazil",
         suburb: "Jardim Botânico",
         government_area: "Jardim Botânico",
         market: "Rio De Janeiro",
         country: "Brazil",
         country_code: "BR",
-        location: {
+        location: [{
           type: "Point",
           coordinates: [-43.23074991429229, -22.966253551739655],
           is_location_exact: true,
-        },
-      },
+        }],
+      }],
       // availability: {
       //   availability_30: 0,
       //   availability_60: 0,
@@ -355,19 +355,19 @@ export const db: DB = {
       //   host_total_listings_count: 18,
       //   host_verifications: ["email", "phone", "reviews", "kba"],
       // },
-      address: {
+      address: [{
         street: "Honolulu, HI, United States",
         suburb: "Oʻahu",
         government_area: "Primary Urban Center",
         market: "Oahu",
         country: "United States",
         country_code: "US",
-        location: {
+        location: [{
           type: "Point",
           coordinates: [-157.83919, 21.28634],
           is_location_exact: true,
-        },
-      },
+        }],
+      }],
       // availability: {
       //   availability_30: 16,
       //   availability_60: 46,
@@ -491,19 +491,19 @@ export const db: DB = {
       //   host_total_listings_count: 1,
       //   host_verifications: ["email", "phone", "reviews", "kba"],
       // },
-      address: {
+      address: [{
         street: "Brooklyn, NY, United States",
         suburb: "Brooklyn",
         government_area: "Bushwick",
         market: "New York",
         country: "United States",
         country_code: "US",
-        location: {
+        location: [{
           type: "Point",
           coordinates: [-73.93615, 40.69791],
           is_location_exact: true,
-        },
-      },
+        }],
+      }],
       // availability: {
       //   availability_30: 0,
       //   availability_60: 0,
@@ -607,19 +607,19 @@ export const db: DB = {
       //   host_total_listings_count: 1,
       //   host_verifications: ["email", "phone", "jumio", "government_id"],
       // },
-      address: {
+      address: [{
         street: "Rio de Janeiro, Rio de Janeiro, Brazil",
         suburb: "Lagoa",
         government_area: "Lagoa",
         market: "Rio De Janeiro",
         country: "Brazil",
         country_code: "BR",
-        location: {
+        location: [{
           type: "Point",
           coordinates: [-43.205047082633435, -22.971950988341874],
           is_location_exact: true,
-        },
-      },
+        }],
+      }],
       // availability: {
       //   availability_30: 28,
       //   availability_60: 58,

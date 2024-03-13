@@ -60,19 +60,19 @@ const houseSchema = new Schema<House>({
   //   host_total_listings_count: { type: Schema.Types.Number },
   //   host_verifications: { type: Schema.Types.Array },
   // },
-  // address: {
-  //   street: { type: Schema.Types.String },
-  //   suburb: { type: Schema.Types.String },
-  //   government_area: { type: Schema.Types.String },
-  //   market: { type: Schema.Types.String },
-  //   country: { type: Schema.Types.String },
-  //   country_code: { type: Schema.Types.String },
-  //   location: {
-  //     type: { type: Schema.Types.String },
-  //     coordinates: { type: Schema.Types.Array },
-  //     is_location_exact: { type: Schema.Types.Boolean },
-  //   },
-  // },
+   address: [{
+     street: { type: Schema.Types.String },
+     suburb: { type: Schema.Types.String },
+     government_area: { type: Schema.Types.String },
+     market: { type: Schema.Types.String },
+     country: { type: Schema.Types.String },
+     country_code: { type: Schema.Types.String },
+     location: {
+       type: { type: Schema.Types.String },
+       coordinates: { type: Schema.Types.Array },
+       is_location_exact: { type: Schema.Types.Boolean },
+     },
+   }],
   // availability: {
   //   availability_30: { type: Schema.Types.Number },
   //   availability_60: { type: Schema.Types.Number },
