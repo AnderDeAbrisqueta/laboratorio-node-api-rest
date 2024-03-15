@@ -58,13 +58,11 @@ export const mockRepository: HouseRepository = {
     return true;
   },
   getReviews: async (id: string) => {
-    return await houseContext
-      .find(
-        {
-          _id: id,
-        },
-        { _id: 0, reviews: 1 }
-      )
-      .lean();
+    const house = db.houses.find((house) => house._id.toHexString() === id);
+    if (house) {
+      return house.reviews;
+    } else {
+      return [];
+    }
   },
 };
