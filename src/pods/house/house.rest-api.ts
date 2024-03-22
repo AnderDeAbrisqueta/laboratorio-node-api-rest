@@ -86,3 +86,15 @@ houseApi.get("/:id/reviews", async (req, res, next) => {
     next(error);
   }
 });
+
+houseApi.post("/:id/reviews", async (req, res, next) => {
+  try {
+    const { id } = req.params;
+    const newReviewData = req.body;
+    const savedReview = await houseRepository.saveReview(id, newReviewData);
+    
+    res.send(savedReview);
+  } catch (error) {
+    next(error);
+  }
+});

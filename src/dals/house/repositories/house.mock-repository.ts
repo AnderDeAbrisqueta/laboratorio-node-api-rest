@@ -1,8 +1,7 @@
 import { ObjectId } from "mongodb";
 import { HouseRepository } from "./house.repository";
-import { House } from "../house.model";
+import { House, Review } from "../house.model";
 import { db } from "../../mock-data";
-import { houseContext } from "../house.context";
 
 const insertHouse = (house: House) => {
   const _id = new ObjectId();
@@ -65,4 +64,22 @@ export const mockRepository: HouseRepository = {
       return [];
     }
   },
+  saveReview: async (id: string, review: Review): Promise<Review[]> => {
+    const houseIndex = db.houses.findIndex((h) => h._id.toHexString() === id);
+
+    if (houseIndex !== -1) {
+      const newReview: Review = {
+        _id: new ObjectId().toHexString(),
+        date: new Date(),
+        comments: review.comments
+      };
+
+      db.houses[houseIndex].reviews.push(newReview);
+
+      return db.houses[houseIndex].reviews;
+      
+    } else {
+      return [];
+    }
+  }
 };

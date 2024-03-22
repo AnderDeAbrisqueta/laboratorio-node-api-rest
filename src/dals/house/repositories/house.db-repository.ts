@@ -1,7 +1,8 @@
 import { ObjectId } from "mongodb";
 import { HouseRepository } from "./house.repository";
-import { House } from "../house.model";
+import { House, Review } from "../house.model";
 import { houseContext } from "../house.context";
+import { mapReviewsFromModelToApi } from "pods/house/house.mappers";
 
 export const dbRepository: HouseRepository = {
   getHouseList: async (page?: number, pageSize?: number, country?: string) => {
@@ -55,4 +56,29 @@ export const dbRepository: HouseRepository = {
 
     return reviews;
   },
+  saveReview: async (id: string, review: Review) => {
+    try {
+    
+      const house = await houseContext.findById(id);
+
+      if (!house) {
+        throw new Error(`La casa con ID ${id} no fue encontrada.`);
+      }
+
+      const newReview: Review = {
+        _id: new ObjectId().toHexString(),
+        date: new Date(),
+        comments: review.comments
+      };
+
+      house.reviews.push(newReview);
+
+      await house.save();
+
+      return mapReviewsFromModelToApi(house.reviews);
+
+    } catch (error) {
+      throw new Error(`Error al guardar la revisión: ${error.message}`);
+    }
+  }
 };

@@ -7,7 +7,8 @@ export interface HouseRepository {
     country?: string
   ) => Promise<House[]>;
   getHouse: (id: string) => Promise<House>;
-  saveHouse: (book: House) => Promise<House>;
+  saveHouse: (house: House) => Promise<House>;
   deleteHouse: (id: string) => Promise<boolean>;
   getReviews: (id: string) => Promise<Review[]>;
+  saveReview: (id: string, review: Review) => Promise<Review[]>;
 }
