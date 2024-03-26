@@ -124,6 +124,8 @@ export const mapHouseFromApiToModel = (house: apiModel.House): model.House => ({
   reviews: house.reviews,
 });
 
+export const mapHouseListFromApiToModel = (houseList: apiModel.House[]): model.House[] => Array.isArray(houseList)  ? houseList.map(mapHouseFromApiToModel) : [];
+
 export const mapReviewFromModelToApi = (
   review: model.Review
 ): apiModel.Review => ({
@@ -153,3 +155,5 @@ export const mapReviewFromApiToModel = (
     : undefined,
   comments: review.comments,
 });
+
+export const mapReviewListFromApiToModel = (reviewList: apiModel.Review[]): model.Review[] => Array.isArray(reviewList)  ? reviewList.map(mapReviewFromApiToModel) : [];
