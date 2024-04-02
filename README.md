@@ -12,7 +12,7 @@ El enponint para obtener el detalle de una casas es: (GET) http://localhost:3000
 El enponint para obtener el listado de reviews de una casas es: (GET) http://localhost:3000/api/houses/**id**/reviews
 
 ## Endpoint para insertar una review
-El enponint para incertar una review de una casas es: (POST) http://localhost:3000/api/houses/**id**/reviews
+El enponint para insertar una review de una casas es: (POST) http://localhost:3000/api/houses/**id**/reviews
 
 ## TEST TDD
 Usar `npm start test:watch`.
